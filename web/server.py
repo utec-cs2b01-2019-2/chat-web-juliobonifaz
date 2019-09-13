@@ -212,16 +212,19 @@ def logout():
 
 
 #stayless
-@app.rout('/cuantasletras/<nombre>')
+@app.route('/cuantasletras/<nombre>')
 def cuantasletras(nombre):
     return str(len(nombre))
 
 #stayfull
-@app.rout('/suma/<numero>')
+@app.route('/suma/<numero>')
 def suma(numero):
+    if "suma" not in session:
+        session['suma'] = 0
+
     suma = session['suma']
     suma = suma + int(numero)
-    session[suma] = suma
+    session['suma'] = suma
     return str(suma)
 
 
